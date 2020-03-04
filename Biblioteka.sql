@@ -5,6 +5,8 @@ USE Biblioteka;
 
 DROP TABLE racun;
 
+-- Funkija CASE(uslov) za constraint u tabelama je podrzana tek u MySQL MySQL 8.0.16 
+
 CREATE TABLE racun(
 	br_racuna INT primary key unique check(broj_racuna > 0),
     ime_musterije VARCHAR(20),
@@ -18,10 +20,10 @@ CREATE TABLE knjiga(
 );
 
 CREATE TABLE posudjivanje(
-	br_racuna INT ,
+	br_racuna INT,
     broj_knjige INT,
     datum_posudjivanja DATE,
     foreign key(br_racuna) references racun(br_racuna),
-	foreign key(broj_knjige) references racun(broj_knjige)
+	foreign key(broj_knjige) references knjiga(broj_knjige)
 );
 
